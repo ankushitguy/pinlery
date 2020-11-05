@@ -23,10 +23,10 @@ class Section(models.Model):
     board = models.ForeignKey(to=Board, on_delete=models.CASCADE)
 
     def title_custom_split(self):
-        return self.title.replace('[ ', '').split(' ]')
+        return self.title.replace('[ ', '').split(' ] ')
 
     def slug_custom_split(self):
-        return self.title.replace('[ ', '').split(' ]')[0].replace(' ', '-')
+        return self.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
 
     def __str__(self):
         return self.title
