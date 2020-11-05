@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> freewall demo getting started</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
+  <style type="text/css">
+
+html {
+  /* page color */
+  background-color: rgb(143,188,139);
+
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.frame {
+    box-sizing: border-box;
+    box-shadow:
+          inset 0 -1px 1px rgba(0,0,0,0.2),
+          inset 0 -2px 2px rgba(149,174,142,0.5),
+          inset 1px 0 1px rgba(0,0,0,0.6),
+          inset 2px 0 2px rgba(149,174,142,0.5),
+          inset -1px 0 1px rgba(0,0,0,0.6),
+          inset -2px 0 2px rgba(149,174,142,0.5),
+          0 0 1px rgba(0,0,0,0.3),
+          0 4px 4px rgba(0,0,0,0.2),
+          0 8px 8px rgba(0,0,0,0.2),
+          0 16px 16px rgba(0,0,0,0.2),
+          0 32px 32px rgba(0,0,0,0.2),
+          0 64px 64px rgba(0,0,0,0.2),
+          /*color shadows*/
+          0 0 128px rgba(149,174,142 ,0.5);
+    display: block;
+    background: rgb(238,243,220);
+    padding: 8px;
+}
+
+.image {
+  /* colored shadow (first) */
+    box-sizing: border-box;
+    box-shadow:
+        0 1px 1px rgba(0,0,0,0.2),
+        0 -1px 1px rgba(0,0,0,0.2),
+        -1px 0 1px rgba(0,0,0,0.2),
+        1px 0 1px rgba(0,0,0,0.2);
+    display: block;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.imageWrapper {
+    padding: 22px;
+    background-color: whitesmoke;
+    box-shadow: inset 0 0 2px rgba(0,0,0,0.2),
+                inset 0 0 4px rgba(0,0,0,0.1),
+                inset 0 0 8px rgba(0,0,0,0.1),
+                inset 0 0 12px rgba(0,0,0,0.1),
+                0 0 1px rgba(149,174,142,0.5),
+                0 0 2px rgba(149,174,142,0.5),
+                0 0 4px rgba(149,174,142,0.5);
+}
+
+
+#macy-container::before { content: ""; display: table; clear: both;}
+#macy-container { margin-top: 22px; }
+#macy-container::after { content: ""; display: table; clear: both;}
+  </style>
+</head>
+<div class="bricklayer">
+<section class="section">
+            <div class="container">
+                <div id="macy-container">
+                    {% for pin in pins %}
+                    <div class="demo">
+                        <div class="imageWrapper">
+                            <img src="{{ pin.image_url }}" alt="" class="image">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+</div>
+
+  <script>
+Macy.init({
+    container: '#macy-container',
+    trueOrder: false,
+    waitForImages: false,
+    margin: 60,
+    columns: 3,
+    breakAt: {
+        1200: 3,
+        940: 2,
+        520: 1,
+        400: 1
+    }
+});
+  </script>
+
+</html>

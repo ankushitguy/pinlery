@@ -1,0 +1,165 @@
+
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav mr-auto" id="panel-menu">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <div class="row">
+                        <div class="col-1">
+                            <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill" type="button">
+                                <span class="far fa-heart"></span>
+                            </button>
+                        </div>
+                        <div class="col-9">
+                            <h5 class="center-vertical-absolute ml-2">
+                                Heart
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class=" row">
+                        <div class="col-2 opacity-0">
+                            <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill" type="button">
+                                <b class="far fa-heart"></b>
+                            </button>
+                        </div>
+                        <div class="col-9">
+                            <h5 class=" d-block center-vertical-absolute text-right" style="width:100%">
+                                More artists
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">
+                        Action
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        Another action
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        Something else here
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <div class="row">
+                        <div class="col-1">
+                            <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill" type="button">
+                                <span class="far fa-heart"></span>
+                            </button>
+                        </div>
+                        <div class="col-9">
+                            <h5 class="center-vertical-absolute ml-2">
+                                Heart
+                            </h5>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-default my-2 my-sm-0" type="submit">
+                Search
+            </button>
+        </form>
+    </div>
+
+
+    <script>
+
+
+    document.addEventListener(
+        "DOMContentLoaded", () => {
+            new Mmenu( "#menu", {
+				wrappers: [ 'bootstrap' ],
+
+                extensions: ["shadow-page", "shadow-panels","shadow-menu", "multiline"],
+
+               "iconPanels": true,
+                "navbars": [
+
+                    {
+                     "position": "top",
+                     "content": [
+                        "breadcrumbs",
+                     ]
+                  },
+                    {
+                     "position": "bottom",
+                     "content": [
+                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset\' type='button'>" +
+                        "<b class='fa fa-home'></b>" + "</button></a>",
+                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset\' type='button'>" +
+                        "<b class='fa fa-home'></b>" + "</button></a>",
+                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset\' type='button'>" +
+                        "<b class='fa fa-home'></b>" + "</button></a>",
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "type": "title",
+                     "content": [
+                         "<b class='p-0 m-0'>" +
+                         "Artworks by {{ section_title.0 }} on the" +
+                         "</b>",
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "type": "title",
+                     "content": [
+                         "<a class='p-0 m-0'><h1 class='p-0 m0'>#AESTHETICLIMBO</h1></a>",
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "type": "title",
+                     "content": [
+                         "<a class=''>" +
+                         "<h1 class='shadow-inset badge d-inline badge badge-pill border-0 bg-primary'>" +
+                         "ART DAILY</h1></a>",
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "type": "tabs",
+                     "content": [
+                         "<a href='#panel-menu'>" +
+                         "<button class=\"btn btn-sm btn-icon-only border-0 shadow-inset btn-primary\" type=\"button\">" +
+                         "<span class=\"fa fa-home\"></span>" + "</button></a>",
+                        "<a href='#panel-language'>Log in</a>",
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "content": [
+                        "searchfield"
+                     ]
+                  },
+               ],
+                "searchfield": {
+                  "showTextItems": true,
+                    "clear": true
+               },
+                "setSelected": {
+                  "hover": true,
+                  "parent": true
+               },
+            }, {
+                // configuration
+                offCanvas: {
+                    page: {
+                        selector: "#my-page"
+                    }
+                }
+            });
+        }
+    );
+
+    </script>

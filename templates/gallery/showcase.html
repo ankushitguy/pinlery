@@ -1,0 +1,62 @@
+{% extends 'gallery/base.html' %}
+
+{% block static_CSS %}
+    {% include 'gallery/partials/imports/import-static-css.html' %}
+{% endblock %}
+
+{% block navigation %}
+    {% include 'gallery/partials/nav-bar.html' %}
+{% endblock %}
+
+{% block menu %}
+    {% include 'gallery/partials/menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="text-center jumbotron">
+            <h5>
+                {{ section_title.1 }}
+            </h5>
+            <h1>
+                {{ section_title.0 }}
+            </h1>
+            </div>
+        <div id="macy-container">
+            {% for pin in pins %}
+                <div class="btn btn-primary btn border-0 rounded-0 m-0 p-0">
+                    <a data-fancybox="{{ section_slug }}" href="{{ pin.image_url }}" data-caption="{{ pin.title }}"
+                       class="d-block frame" style="background-color:{{ pin.color }}">
+                        <div class="imageWrapper bg-1">
+                            <img src="{{ pin.image_url }}" alt="" class="image">
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if pins.paginator.num_pages > 1 %}
+        {% if pins.has_previous %}
+            <a href="?page={{ pins.previous_page_number }}">previous</a>
+        {% endif %}
+        <span>
+            Page {{ pins.number }} of {{ pins.paginator.num_pages }}
+        </span>
+        {% if pins.has_next %}
+            <a href="?page={{ pins.next_page_number }}">next</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block static_JS %}
+    {% include 'gallery/partials/imports/import-static-js.html' %}
+{% endblock %}
+
+{% block page_scripts %}
+
+  <script>
+
+  </script>
+
+{% endblock %}
+

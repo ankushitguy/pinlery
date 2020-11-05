@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+{% load static %}
+{% load fontawesome_5 %}
+<html>
+<head>
+    {% load static %}
+  <title> freewall demo getting started</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/bootstrap/4.5.3/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.sidebar.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.searchfield.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mburger.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mhead.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/fancybox/3.5.7/css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/themes/neumorphism/css/neumorphism.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/showcase.css' %}">
+  {% fontawesome_5_static %}
+
+
+ <style>
+html {
+  /* page color */
+  background-color: #f2f3f7;
+
+}
+.container {
+}
+
+.bsnav {
+}
+
+.sectionImagesContainer {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.sectionImage {
+    box-sizing: border-box;
+    background-color: #f2f3f7;
+}
+
+
+h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sectionWrapper {
+    text-decoration: none;
+    color: grey;
+}
+
+.bg-1 {
+    background: linear-gradient(-45deg, rgba(0,0,0,0), rgba(247,247,249,0.75));
+}
+
+.bg-2 {
+    background: linear-gradient(-45deg, rgba(230,231,238,0), rgba(247,247,249,0.75));
+}
+
+.bg-3 {
+    background: linear-gradient(45deg, rgba(230,231,238,0), rgba(247,247,249,0.75));
+}
+
+.container {
+    max-width: 80%;
+  }
+
+@media (orientation: portrait) {
+  .container {
+    max-width: 70%;
+  }
+}
+
+    </style>
+
+
+
+</head>
+
+<! -- navigation -->
+<div class="wrapper" id="my-page">
+<a href="#menu" id="open-button">Open the menu</a>
+
+<a href="#my-page" id="close-button">close the menu</a>
+<nav id="menu" class="shadow">
+
+				<ul id="panel-menu">
+					<li><a href="#/">Home</a></li>
+					<li><a href="#/work">Our work</a></li>
+					<li><span>About us</span>
+						<ul>
+							<li><a href="#/about/history">History</a></li>
+							<li><span>The team</span>
+								<ul>
+									<li><a href="#/about/team/management">Management</a></li>
+									<li><a href="#/about/team/sales">Sales</a></li>
+									<li><a href="#/about/team/development">Development</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><span>Services</span>
+						<ul>
+							<li><a href="#/services/design">Design</a></li>
+							<li><a href="#/services/development">Development</a></li>
+							<li><a href="#/services/marketing">Marketing</a></li>
+						</ul>
+					</li>
+					<li><a href="#/contact">Contact</a></li>
+				</ul>
+			</nav>
+
+
+
+
+<! -- main -->
+
+    <div class="container macy-container">
+        {% if section_list %}
+            {% for section in section_list %}
+                <div class="border border-light shadow card bg-primary p-1 bg-1">
+
+                    <div class="text-black rounded text-center p-1 pt-4 pb-3 m-2">
+                        <a class="" href="{{ section.slug }}">
+                            <h3 >{{ section.title_custom_split.0 }}</h3>
+                        </a>
+                    </div>
+
+                    <a class=" row sectionImagesContainer mr-3 ml-3" href="{{ section.slug }}">
+                        {% for pin in section.pin_set.all|slice:":2" %}
+                            <div class=" col-6">
+                                <img src="{{ pin.small_image_url }}" alt="" class="sectionImage shadow-lg rounded">
+                            </div>
+
+                        {% endfor %}
+                    </a>
+
+                <div class="post-meta p-2 border border-light rounded bg-2 mt-4 m-2">
+                    <div class="row">
+                        <div class="col-3">
+                            <span class="badge badge-lg shadow-inset">
+                                <b class="">
+                                    <span aria-hidden="true" class="far fa-heart "></span>
+                                     324</b>
+                            </span>
+                        </div>
+                        <div class="col-9 text-right">
+                            <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-danger mr-2 bg-1" type="button">
+                                <span aria-hidden="true" class="far fa-heart"></span>
+                            </button>
+                            <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-2" type="button">
+                                <span aria-hidden="true" class="far fa-heart"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+</div>
+<! -- navigation mobile -->
+
+<! -- scripts -->
+
+<script src="{% static '/vendor/macy.js/2.5.1/js/macy.min.js' %}"></script>
+<script src="{% static '/vendor/jquery/3.5.1/js/jquery.min.js' %}"></script>
+<script src="{% static '/vendor/bootstrap/4.5.3/js/bootstrap.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.sidebar.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.searchfield.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mhead.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mburger.js' %}"></script>
+<script src="{% static '/vendor/fancybox/3.5.7/js/jquery.fancybox.min.js' %}"></script>
+<script src="{% static 'neomorphism/assets/js/neumorphism.js' %}"></script>
+
+
+<! -- macy -->
+
+
+<script>
+    document.addEventListener(
+        "DOMContentLoaded", () => {
+            new Mmenu( "#menu", {
+
+                extensions: ["shadow-page", "multiline", "pagedim-white", "sidebar"],
+                sidebar: {
+                    collapsed: "(min-width: 550px)",
+                    expanded: "(min-width: 700px)",
+                    blockMenu: false,
+                    hideNavbar: true
+                },
+               "iconPanels": true,
+                "navbars": [
+                  {
+                     "position": "top",
+                     "content": [
+                        "<a><h3 href='#/'>#AESTHETICLIMBO</h3></a>"
+                     ]
+                  },
+                    {
+                     "position": "top",
+                     "type": "tabs",
+                     "content": [
+                        "<a href='#panel-menu'><i class='fa fa-home'></i></a>",
+                        "<a></a>",
+                        "<a href='#panel-language'>Log in</a>",
+                     ]
+                  },
+                    {
+                     "position": "bottom",
+                     "content": [
+                        "searchfield"
+                     ]
+                  },
+                    {
+                     "position": "bottom",
+                     "content": [
+                        "<a class='fa fa-envelope' href='#/'></a>",
+                        "<a class='fa fa-twitter' href='#/'></a>",
+                        "<a class='fa fa-facebook' href='#/'></a>"
+                     ]
+                  }
+               ],
+                "iconbar": {
+                  "use": true,
+                  "top": [
+                     "<a href='#/'><i class='fa fa-home'></i></a>",
+                     "<a href='#/'><i class='fa fa-user'></i></a>"
+                  ],
+                  "bottom": [
+                     "<a href='#/'><i class='fa fa-twitter'></i></a>",
+                     "<a href='#/'><i class='fa fa-facebook'></i></a>",
+                     "<a href='#/'><i class='fa fa-linkedin'></i></a>"
+                  ]
+               },
+                "searchfield": {
+                  "showTextItems": true,
+                    "clear": true
+               },
+                "setSelected": {
+                  "hover": true,
+                  "parent": true
+               },
+            }, {
+                // configuration
+                offCanvas: {
+                    page: {
+                        selector: "#my-page"
+                    }
+                }
+            });
+
+            const api = menu.API;
+
+            document.querySelector( "#open-button" )
+                .addEventListener(
+                    "click", ( evnt ) => {
+                        evnt.preventDefault();
+                        api.open();
+                    })
+
+
+            document.querySelector( "#close-button" )
+                .addEventListener(
+                    "click", ( evnt ) => {
+                        evnt.preventDefault();
+                        api.close();
+                    }
+                );
+
+
+        }
+    );
+</script>
+
+
+
+<script>
+    document.addEventListener(
+        "DOMContentLoaded", () => {
+            new Mmenu( "#about", {
+               "autoHeight": true,
+               "dropdown": true,
+                "pageScroll": true
+            });
+        }
+    );
+</script>
+
+
+  <script>
+window.onresize = doALoadOfStuff;
+
+function doALoadOfStuff() {
+    Macy({
+    container: '.macy-container',
+    trueOrder: true,
+    waitForImages: true,
+    margin: 25,
+    columns:4,
+    breakAt: {
+        1280: 3,
+        920: 2,
+        720: 1
+}});
+}
+doALoadOfStuff()
+doALoadOfStuff()
+  </script>
+
+</html>
