@@ -34,7 +34,7 @@
                 <div class="btn btn-primary btn border-0 rounded-0 m-0 p-0">
                     <a data-fancybox="{{ section_slug }}" href="{{ pin.image_url }}" data-caption="{{ pin.title }}"
                        class="d-block frame" style="background-color:{{ pin.color }}">
-                        <div class="imageWrapper bg-1">
+                        <div class="imageWrapper">
                             <img src="{{ pin.image_url }}" alt="" class="image">
                         </div>
                     </a>
@@ -60,7 +60,7 @@
 {% endblock %}
 
 {% block page_scripts %}
-{% include './partials/scripts/script_init_grid.html' with grid_margin=18 columns=3 b1280=3 b920=2 b720=1 only %}
+{% include './partials/scripts/script_init_grid.html' with margin=18 columns=3 b1280=3 b920=2 b720=1 only %}
 
 {% endblock %}
 

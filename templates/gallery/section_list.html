@@ -1,116 +1,40 @@
-<!DOCTYPE html>
-{% load static %}
-{% load fontawesome_5 %}
-<html>
-<head>
-    {% load static %}
-  <title> freewall demo getting started</title>
+{% extends 'gallery/base.html' %}
 
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/bootstrap/4.5.3/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.sidebar.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mmenu.searchfield.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mburger.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/mmenu.js/8.5.19/css/mhead.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/vendor/fancybox/3.5.7/css/jquery.fancybox.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/themes/neumorphism/css/neumorphism.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static '/gallery/showcase.css' %}">
-  {% fontawesome_5_static %}
+{% block static_CSS %}
+    {% include 'gallery/partials/imports/import-static-css.html' %}
+{% endblock %}
 
+{% block navigation %}
+    {% include 'gallery/partials/nav-bar.html' %}
+{% endblock %}
 
- <style>
-html {
-  /* page color */
-  background-color: #f2f3f7;
-
-}
-.container {
-}
-
-.bsnav {
-}
-
-.sectionImage {
-    box-sizing: border-box;
-}
-
-
-h3 {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.bg-1 {
-    background: linear-gradient(-45deg, rgba(0,0,0,0), rgba(247,247,249,0.75));
-}
-
-.bg-2 {
-    background: linear-gradient(-45deg, rgba(230,231,238,0), rgba(247,247,249,0.75));
-}
-
-.bg-3 {
-    background: linear-gradient(45deg, rgba(230,231,238,0), rgba(247,247,249,0.75));
-}
-
-.container {
-    max-width: 80%;
-  }
-
-@media (orientation: portrait) {
-  .container {
-    max-width: 90%;
-  }
-}
-
-     .row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-     .column {
-  flex: 50%;
-  max-width: 50%;
-  padding: 0 4px;
-}
-
-     .column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-    </style>
-
-
-
-</head>
-
-{% include './partials/nav-bar.html' %}
-
+{% block menu %}
+    {% include 'gallery/partials/menu.html' %}
+{% endblock %}
 
 <! -- main -->
-
-    <div class="container macy-container">
+{% block content %}
+    <div class="container" id="macy-container">
         {% if section_list %}
             {% for section in section_list %}
                 <div class="border border-light shadow card bg-primary bg-1">
-                    <div class="text-black rounded text-center p-2 mt-4 pb-2">
+                    <div class="text-black rounded text-center m-2 pt-3 mt-3 ">
                         <a class="" href="{{ section.slug }}">
-                            <h3> {{ section.title_custom_split.0 }} </h3>
+                            <h3 class="pr-0 pl-0 pb-1 mb-0">{{ section.title_custom_split.0 }}</h3>
+                            <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
                         </a>
                     </div>
 
-                    <a class="row pr-5 pl-5" href="{{ section.slug }}">
+                    <a class="row mr-4 ml-4 mt-2 mb-2" href="{{ section.slug }}">
                         {% for pin in section.pin_set.all|slice:":2" %}
-                            <div class="pr-1 pl-1 column">
+                            <div class="col-6">
                                 <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded">
                             </div>
 
                         {% endfor %}
                     </a>
 
-                <div class="post-meta p-2 border border-light rounded bg-2 mt-4 m-2">
+                <div class="post-meta border border-light rounded bg-2 p-2 mt-3 mb-2 mr-2 ml-2">
                     <div class="row">
                         <div class="col-3">
                             <span class="badge badge-lg shadow-inset">
@@ -133,47 +57,13 @@ h3 {
             {% endfor %}
         {% endif %}
     </div>
+{% endblock %}
 
+{% block static_JS %}
+    {% include './partials/imports/import-static-js.html' %}
+{% endblock %}
 
-</div>
-<! -- navigation mobile -->
+{% block page_scripts %}
+    {% include './partials/scripts/script_init_grid.html' with margin=18 columns=4 b1280=3 b920=2 b720=2 only %}
+{% endblock %}
 
-<! -- scripts -->
-<script src="{% static '/vendor/macy.js/2.5.1/js/macy.min.js' %}"></script>
-<script src="{% static '/vendor/jquery/3.5.1/js/jquery.min.js' %}"></script>
-<script src="{% static '/vendor/bootstrap/4.5.3/js/bootstrap.min.js' %}"></script>
-<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.min.js' %}"></script>
-<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.sidebar.min.js' %}"></script>
-<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.searchfield.min.js' %}"></script>
-<script src="{% static '/vendor/mmenu.js/8.5.19/js/mhead.js' %}"></script>
-<script src="{% static '/vendor/mmenu.js/8.5.19/js/mburger.js' %}"></script>
-<script src="{% static '/vendor/fancybox/3.5.7/js/jquery.fancybox.min.js' %}"></script>
-<script src="{% static 'neomorphism/assets/js/neumorphism.js' %}"></script>
-<script src="{% static '/gallery/js/init_header.js' %}"></script>
-
-{% include './partials/scripts/script_init_grid.html' with margin=18 columns=4 b1280=3 b920=2 b720=2 only %}
-
-<! -- macy -->
-
-
-  <script>
-window.onresize = doALoadOfStuff;
-
-function doALoadOfStuff() {
-    Macy({
-    container: '.macy-container',
-    trueOrder: true,
-    waitForImages: true,
-    margin: 18,
-    columns:4,
-    breakAt: {
-        1280: 3,
-        920: 2,
-        720: 2
-}});
-}
-doALoadOfStuff()
-doALoadOfStuff()
-  </script>
-
-</html>
