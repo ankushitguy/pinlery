@@ -18,14 +18,14 @@
         {% if section_list %}
             {% for section in section_list %}
                 <div class="border border-light shadow card bg-primary bg-1">
-                    <div class="text-black rounded text-center m-2 pt-3 mt-3 ">
+                    <div class="text-black rounded text-center p-3 mt-4">
                         <a class="" href="{{ section.slug }}">
-                            <h3 class="pr-0 pl-0 pb-1 mb-0">{{ section.title_custom_split.0 }}</h3>
+                            <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
                             <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
                         </a>
                     </div>
 
-                    <a class="row mr-4 ml-4 mt-2 mb-2" href="{{ section.slug }}">
+                    <a class="row mr-4 ml-4 p-1 mb-3" href="{{ section.slug }}">
                         {% for pin in section.pin_set.all|slice:":2" %}
                             <div class="col-6">
                                 <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded">
@@ -34,7 +34,7 @@
                         {% endfor %}
                     </a>
 
-                <div class="post-meta border border-light rounded bg-2 p-2 mt-3 mb-2 mr-2 ml-2">
+                <div class="post-meta border border-light rounded bg-2 p-2 m-2">
                     <div class="row">
                         <div class="col-3">
                             <span class="badge badge-lg shadow-inset">
