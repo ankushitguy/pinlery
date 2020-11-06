@@ -16,16 +16,16 @@
     <div class="container">
         <div class="text-center jumbotron bg-primary m-0">
 
-            <h2>
+            <h5>
+                {{ section_title.1 }}
+            </h5>
+            <h1>
                 {{ section_title.0 }}
-            </h2>
+            </h1>
 
             <p>
-                ARTWORKS COLLECTION
+                artworks collection
             </p>
-            <h1>
-                {{ section_title.1 }}
-            </h1>
 
 
             </div>
@@ -56,14 +56,11 @@
 {% endblock %}
 
 {% block static_JS %}
-    {% include 'gallery/partials/imports/import-static-js.html' %}
+    {% include './partials/imports/import-static-js.html' %}
 {% endblock %}
 
 {% block page_scripts %}
-
-  <script>
-
-  </script>
+{% include './partials/scripts/script_init_grid.html' with grid_margin=18 columns=3 b1280=3 b920=2 b720=1 only %}
 
 {% endblock %}
 

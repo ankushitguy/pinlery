@@ -1,0 +1,30 @@
+{{ grid_margin|json_script:"grid_margin" }}
+{{ columns|json_script:"columns" }}
+{{ b1280|json_script:"b1280" }}
+{{ b920|json_script:"b920" }}
+{{ b720|json_script:"b720" }}
+<script>
+let grid_margin = JSON.parse(document.getElementById('grid_margin').textContent);
+let columns = JSON.parse(document.getElementById('columns').textContent);
+let b1280 = JSON.parse(document.getElementById('b1280').textContent);
+let b920 = JSON.parse(document.getElementById('b920').textContent);
+let b720 = JSON.parse(document.getElementById('b720').textContent);
+
+window.onresize = doALoadOfStuff;
+
+function doALoadOfStuff() {
+    Macy({
+    container: '#macy-container',
+    trueOrder: true,
+    waitForImages: true,
+    margin: grid_margin,
+    columns: columns,
+    breakAt: {
+        1280: b1280,
+        920: b920,
+        720: b720
+    }});
+}
+doALoadOfStuff()
+doALoadOfStuff()
+</script>
