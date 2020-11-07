@@ -14,9 +14,6 @@
 
 <! -- main -->
 {% block content %}
-                                <script>
-                                function ola() {$(".fancybox-image").wrap('<a href="sdsd" />')}
-                            </script>
     <div class="container" id="macy-container">
         {% if section_list %}
             {% for section in section_list %}
@@ -35,7 +32,7 @@
                             <a data-fancybox="collection"
                                data-options='{"caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}</a>",
                                "src":"{{ pin.image_url }}",
-                               "link":"{% url 'showcase' section.slug %}", "clickContent" : false}'>
+                               "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false}'>
                                 <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
                             </a>
                             </div>
@@ -73,12 +70,6 @@
 
 {% block page_scripts %}
     {% include './partials/scripts/script_init_grid.html' with margin=18 columns=4 b1280=3 b920=2 b720=2 only %}
-    <script>
-    $(document).on('afterShow.fb', function( e, instance, slide ) {
-        document.body.style.cursor = 'wait';
-    $(".fancybox-image").wrap('<a href="' + slide.opts.link + '" />');
-	instance.updateControls();
-});
-    </script>
+    {% include './partials/scripts/script_lightbox_image_link.html' %}
 {% endblock %}
 
