@@ -5,35 +5,31 @@
 {% endblock %}
 
 {% block navigation %}
-    {% include 'gallery/partials/nav-bar.html' %}
+    {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
 
 {% block menu %}
-    {% include 'gallery/partials/menu.html' %}
+    {% include 'gallery/partials/elements/menu.html' %}
 {% endblock %}
 
 {% block content %}
     <div class="container">
-        <div class="text-center jumbotron bg-primary m-0">
-
+        <div class="text-center jumbotron bg-primary m-0 mt-3 p-5">
             <h5>
                 {{ section_title.1 }}
             </h5>
             <h1>
                 {{ section_title.0 }}
             </h1>
-
             <p>
                 artworks collection
             </p>
-
-
-            </div>
+        </div>
         <div id="macy-container">
             {% for pin in pins %}
                 <div class="btn btn-primary btn border-0 rounded-0 m-0 p-0">
-                    <a data-fancybox="{{ section_slug }}" href="{{ pin.image_url }}" data-caption="{{ pin.title }}"
-                       class="d-block frame" style="background-color:{{ pin.color }}">
+                    <a data-fancybox="{{ section_slug }}" data-options='{"src":"{{ pin.image_url }}", "idleTime": 1}'
+                       data-caption="{{ pin.title }}" class="frame" style="background-color:{{ pin.color }}">
                         <div class="imageWrapper">
                             <img src="{{ pin.image_url }}" alt="" class="image">
                         </div>
@@ -61,6 +57,5 @@
 
 {% block page_scripts %}
 {% include './partials/scripts/script_init_grid.html' with margin=18 columns=3 b1280=3 b920=2 b720=1 only %}
-
 {% endblock %}
 

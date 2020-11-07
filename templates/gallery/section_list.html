@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block navigation %}
-    {% include 'gallery/partials/nav-bar.html' %}
+    {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
 
 {% block menu %}
-    {% include 'gallery/partials/menu.html' %}
+    {% include 'gallery/partials/elements/menu.html' %}
 {% endblock %}
 
 <! -- main -->
@@ -30,7 +30,7 @@
                             <div class="col-6">
 
                             <a data-fancybox="collection"
-                               data-options='{"caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}</a>",
+                               data-options='{"caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }} <br> Touch to enter the entire collection!</a>",
                                "src":"{{ pin.image_url }}",
                                "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false}'>
                                 <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
