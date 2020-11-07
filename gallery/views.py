@@ -4,7 +4,7 @@ from py3pin.Pinterest import Pinterest
 from django.db import IntegrityError
 import os
 from django.shortcuts import render
-from pinwork.settings import BASE_DIR
+from pinlery.settings import BASE_DIR
 from django.shortcuts import redirect
 from django.views import generic
 from django.core.paginator import Paginator
