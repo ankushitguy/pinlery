@@ -14,25 +14,33 @@
 
 <! -- main -->
 {% block content %}
+                                <script>
+                                function ola() {$(".fancybox-image").wrap('<a href="sdsd" />')}
+                            </script>
     <div class="container" id="macy-container">
         {% if section_list %}
             {% for section in section_list %}
                 <div class="border border-light shadow card bg-primary bg-1">
                     <div class="text-black rounded text-center p-3 mt-4">
-                        <a class="" href="{{ section.slug }}">
+                        <a class="" href="{% url 'showcase' section.slug %}">
                             <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
                             <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
                         </a>
                     </div>
 
-                    <a class="row mr-4 ml-4 p-1 mb-3" href="{{ section.slug }}">
+                    <div class="row mr-4 ml-4 p-1 mb-3">
                         {% for pin in section.pin_set.all|slice:":2" %}
                             <div class="col-6">
-                                <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded">
-                            </div>
 
+                            <a data-fancybox="collection"
+                               data-options='{"caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}</a>",
+                               "src":"{{ pin.image_url }}",
+                               "link":"{% url 'showcase' section.slug %}", "clickContent" : false}'>
+                                <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
+                            </a>
+                            </div>
                         {% endfor %}
-                    </a>
+                    </div>
 
                 <div class="post-meta border border-light rounded bg-2 p-2 m-2">
                     <div class="row">
@@ -40,7 +48,7 @@
                             <span class="badge badge-lg shadow-inset">
                                 <b class="">
                                     <span aria-hidden="true" class="far fa-heart "></span>
-                                     324</b>
+                                     {{ section.pin_set.all|length }}</b>
                             </span>
                         </div>
                         <div class="col-9 text-right">
@@ -65,5 +73,12 @@
 
 {% block page_scripts %}
     {% include './partials/scripts/script_init_grid.html' with margin=18 columns=4 b1280=3 b920=2 b720=2 only %}
+    <script>
+    $(document).on('afterShow.fb', function( e, instance, slide ) {
+        document.body.style.cursor = 'wait';
+    $(".fancybox-image").wrap('<a href="' + slide.opts.link + '" />');
+	instance.updateControls();
+});
+    </script>
 {% endblock %}
 
