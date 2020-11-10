@@ -13,11 +13,11 @@
 5. Neumorphism UI
 
 ## TODO LIST
-* Migrate from the Macy.JS to the Isotope.
+* ~~Migrate from the Macy.JS to the Isotope.~~
 * Change Mmenu.JS test data to a real dynamic data.
-* Integrate a lazy image load from the Lazysizes plugin.
-* Find a good smooth page scrolling plugin.
-* (BUG!) Move header logo column to the center.
+* Add custom JQuery scrollbar.
+* Integrate a lazy image load.
+* ~~(BUG!) Move header logo column to the center.~~
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 

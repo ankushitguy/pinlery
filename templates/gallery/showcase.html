@@ -4,6 +4,52 @@
     {% include 'gallery/partials/imports/import-static-css.html' %}
 {% endblock %}
 
+{% block page_styling %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/skeuomorphic_frame.css' %}">
+    <style>
+
+.masonry-grid {
+	box-sizing: border-box;
+	position: absolute;
+	max-width: 70%;
+	margin-left: 15%;
+}
+
+.masonry-grid-sizer {
+	width: calc(50% - 18px);
+}
+
+.masonry-grid-item {
+	box-sizing: border-box;
+	width: calc(50% - 18px);
+	margin-bottom: 18px;
+}
+
+.container-fluid {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+@media handheld,
+only screen and (max-width:720px) {
+	.masonry-grid {
+		position: absolute;
+		max-width: 80%;
+		margin-left: 10%;
+	}
+	.masonry-grid-sizer {
+		width: 100%;
+	}
+	.masonry-grid-item {
+		width: 100%;
+		margin-bottom: 18px;
+	}
+}
+    </style>
+{% endblock %}
+
 {% block navigation %}
     {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
@@ -13,30 +59,33 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="text-center jumbotron bg-primary m-0 mt-3 p-5">
-            <h5>
-                {{ section_title.1 }}
-            </h5>
-            <h1>
-                {{ section_title.0 }}
-            </h1>
-            <p>
-                artworks collection
-            </p>
-        </div>
-        <div id="macy-container">
-            {% for pin in pins %}
-                <div class="btn btn-primary btn border-0 rounded-0 m-0 p-0">
-                    <a data-fancybox="{{ section_slug }}" data-options='{"src":"{{ pin.image_url }}", "idleTime": 1}'
-                       data-caption="{{ pin.title }}" class="frame" style="background-color:{{ pin.color }}">
-                        <div class="imageWrapper">
-                            <img src="{{ pin.image_url }}" alt="" class="image">
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+    <div class="text-center jumbotron bg-primary p-1">
+       <h5 class=" mt-5">
+          {{ section_title.1 }}
+       </h5>
+       <h1>
+          {{ section_title.0 }}
+       </h1>
+       <p>
+          artworks collection
+       </p>
+    </div>
+
+    <div class="masonry-grid">
+       <div class="masonry-grid-sizer"></div>
+       {% for pin in pins %}
+           <div class=" masonry-grid-item">
+              <div class="btn btn-primary border-0 rounded-0 m-0 p-0">
+                 <a data-fancybox="{{ section_slug }}" data-options='{"src":"{{ pin.image_url }}",
+                    "idleTime": false, "arrows": false, "protect": true}'
+                    data-caption="{{ pin.title }}" class="frame" style="background-color:{{ pin.color }}">
+                    <div class="imageWrapper">
+                       <img src="{{ pin.image_url }}" alt="" class="image">
+                    </div>
+                 </a>
+              </div>
+           </div>
+       {% endfor %}
     </div>
     {% if pins.paginator.num_pages > 1 %}
         {% if pins.has_previous %}
@@ -56,6 +105,34 @@
 {% endblock %}
 
 {% block page_scripts %}
-{% include './partials/scripts/script_init_grid.html' with margin=18 columns=3 b1280=3 b920=2 b720=1 only %}
+
+<!-- grid -->
+    <script>
+        $(window).on('load', function() {
+            function gridMasonry() {
+                var grid = $(".masonry-grid")
+                if (grid.length) {
+                    grid.isotope({
+                        itemSelector: ".masonry-grid-item",
+                        layoutMode: "masonry",
+                        masonry: {
+                            columnWidth: ".masonry-grid-sizer",
+                            gutter: 18,
+                        },
+                        percentPosition: true,
+                    });
+                }
+            }
+
+            gridMasonry();
+            window.dispatchEvent(new Event('resize'));
+        });
+    </script>
+    <script>
+    $('[data-fancybox]').fancybox({
+                animationDuration : 325,
+                animationEffect   : 'slide-in-out',
+            });
+    </script>
 {% endblock %}
 

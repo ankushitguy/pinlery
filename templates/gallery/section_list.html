@@ -4,6 +4,89 @@
     {% include 'gallery/partials/imports/import-static-css.html' %}
 {% endblock %}
 
+{% block page_styling %}
+
+    {% load static %}
+    <style>
+    body {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.card {
+	box-sizing: border-box;
+}
+
+.masonry-grid-item img {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+}
+
+@media handheld,
+only screen and (min-width:1200px) {
+	.container {
+		position: absolute;
+		max-width: 90%;
+		margin-left: 5%;
+	}
+	.masonry-grid-sizer {
+		width: calc(25% - 18px);
+	}
+	.masonry-grid-item {
+		width: calc(25% - 18px);
+		margin-bottom: 18px;
+	}
+}
+
+@media handheld,
+only screen and (max-width:1200px) {
+	.masonry-grid-sizer {
+		width: calc(33.3333% - 18px);
+	}
+	.masonry-grid-item {
+		width: calc(33.3333% - 18px);
+		margin-bottom: 18px;
+	}
+}
+
+@media handheld,
+only screen and (max-width:1020px) {
+	.container {
+		position: absolute;
+		max-width: 70%;
+		margin-left: 15%;
+	}
+	.masonry-grid-sizer {
+		width: calc(50% - 18px);
+	}
+	.masonry-grid-item {
+		width: calc(50% - 18px);
+		margin-bottom: 18px;
+	}
+}
+
+@media handheld,
+only screen and (max-width:720px) {
+	.masonry-grid-sizer {
+		width: 100%
+	}
+	.masonry-grid-item {
+		width: 100%;
+		margin-bottom: 18px;
+	}
+	.container {
+		position: absolute;
+		max-width: 70%;
+		margin-left: 15%;
+	}
+}
+    </style>
+{% endblock %}
+
 {% block navigation %}
     {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
@@ -14,53 +97,56 @@
 
 <! -- main -->
 {% block content %}
-    <div class="container" id="macy-container">
-        {% if section_list %}
-            {% for section in section_list %}
-                <div class="border border-light shadow card bg-primary bg-1">
-                    <div class="text-black rounded text-center p-3 mt-4">
-                        <a class="" href="{% url 'showcase' section.slug %}">
-                            <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
-                            <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
-                        </a>
-                    </div>
-
-                    <div class="row mr-4 ml-4 p-1 mb-3">
-                        {% for pin in section.pin_set.all|slice:":2" %}
-                            <div class="col-6">
-
-                            <a data-fancybox="collection"
-                               data-options='{"caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }} <br> Touch to enter the entire collection!</a>",
-                               "src":"{{ pin.image_url }}",
-                               "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false}'>
-                                <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
-                            </a>
+    <div class="container " id="container" role="main">
+        <div class="masonry-grid">
+            <div class="masonry-grid-sizer"></div>
+            {% if section_list %}
+                {% for section in section_list %}
+                    <div class="masonry-grid-item">
+                        <div class="border border-light shadow card bg-primary bg-1">
+                            <div class="text-black rounded text-center p-3 mt-4">
+                                <a class="" href="{% url 'showcase' section.slug %}">
+                                    <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
+                                    <span class="text-gray m-1">{{ section.title_custom_split.1 }}</span>
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
 
-                <div class="post-meta border border-light rounded bg-2 p-2 m-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <span class="badge badge-lg shadow-inset">
-                                <b class="">
-                                    <span aria-hidden="true" class="far fa-heart "></span>
-                                     {{ section.pin_set.all|length }}</b>
-                            </span>
-                        </div>
-                        <div class="col-9 text-right">
-                            <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-danger mr-2 bg-1" type="button">
-                                <span aria-hidden="true" class="far fa-heart"></span>
-                            </button>
-                            <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-2" type="button">
-                                <span aria-hidden="true" class="far fa-heart"></span>
-                            </button>
+                            <div class="row mr-4 ml-4 p-1 mb-3">
+                                {% for pin in section.pin_set.all|slice:":2" %}
+                                    <div class="col-6">
+                                        <a data-fancybox="collection" data-options='{
+                                        "caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}<br>Touch to enter the entire collection!</a>",
+                                        "src":"{{ pin.image_url }}", "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false}'>
+                                            <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="post-meta border border-light rounded bg-2 p-2 m-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span class="badge badge-lg shadow-inset">
+                                            <b class="">
+                                                <span aria-hidden="true" class="far fa-heart "></span>
+                                                {{ section.pin_set.all|length }}
+                                            </b>
+                                        </span>
+                                    </div>
+                                    <div class="col-9 text-right">
+                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-danger mr-2 bg-1" type="button">
+                                            <span aria-hidden="true" class="far fa-heart"></span>
+                                        </button>
+                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-1" type="button">
+                                            <span aria-hidden="true" class="far fa-heart"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                </div>
-            {% endfor %}
-        {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
 
@@ -69,7 +155,26 @@
 {% endblock %}
 
 {% block page_scripts %}
-    {% include './partials/scripts/script_init_grid.html' with margin=18 columns=4 b1280=3 b920=2 b720=2 only %}
-    {% include './partials/scripts/script_lightbox_image_link.html' %}
+    <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
+    <script>
+        $(window).on('load', function(){
+            function gridMasonry(){
+                var grid = $(".masonry-grid")
+                if( grid.length ){
+                    grid.isotope({
+                        itemSelector: ".masonry-grid-item",
+                        layoutMode: "masonry",
+                        masonry: {
+                            columnWidth: ".masonry-grid-sizer",
+                            gutter: 18,
+                        },
+                        percentPosition: true,
+                    });
+                }
+            }
+            gridMasonry();
+            window.dispatchEvent(new Event('resize'));
+        });
+    </script>
 {% endblock %}
 

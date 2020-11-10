@@ -86,3 +86,10 @@ class section_list(generic.ListView):
     def get_queryset(self):
         return Section.objects.filter(active=True)
 
+
+class test(generic.ListView):
+    model = Section
+
+    def get_queryset(self):
+        return Section.objects.filter(active=True)
+

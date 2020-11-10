@@ -8,5 +8,6 @@ urlpatterns = [
     path('sections/', views.create_sections, name='create_sections'),
     path('pins/', views.create_pins, name='create_pins'),
     path('masonry/', views.masonry, name='masonry'),
-    path('gallery/', views.section_list.as_view(), name='list_sections')
+    path('gallery/', views.section_list.as_view(), name='list_sections'),
+    path('test/', views.test, name='test')
 ]

@@ -1,0 +1,99 @@
+<html lang="en">
+<!- head ->
+<head>
+
+    <!- meta ->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!- title ->
+    <title>#AESTHETICLIMBO</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+<style>
+.grid-item {
+    width: calc(25% - 15px);
+    margin-bottom: 15px;
+}
+
+.container {
+    padding: 0 !important;
+}
+
+img {
+    width: 100%
+}
+</style>
+        </head>
+<div class="container">
+	<div class="grid">
+		<div class="grid-item">
+			<img src="https://i.pinimg.com/originals/55/fa/fb/55fafba1703ca43cadec348f8dd192a0.jpg" alt="">
+		</div>
+		<div class="grid-item">
+			<img src="https://i.pinimg.com/originals/0e/a3/4f/0ea34fb199f63ef30f0644c58abddf74.jpg" alt="">
+		</div>
+		<div class="grid-item y-2">
+			<img src="https://i.pinimg.com/originals/9b/74/06/9b7406d9e288c1aa70e7401c407fe2ae.jpg" alt="">
+		</div>
+		<div class="grid-item">
+			<img src="https://i.pinimg.com/originals/0e/a3/4f/0ea34fb199f63ef30f0644c58abddf74.jpg" alt="">
+		</div>
+		<div class="grid-item y-2">
+			<img src="https://i.pinimg.com/originals/55/fa/fb/55fafba1703ca43cadec348f8dd192a0.jpg" alt="">
+		</div>
+		<div class="grid-item">
+			<img src="https://i.pinimg.com/originals/0e/a3/4f/0ea34fb199f63ef30f0644c58abddf74.jpg" alt="">
+		</div>
+		<div class="grid-item y-2">
+			<img src="https://i.pinimg.com/originals/55/fa/fb/55fafba1703ca43cadec348f8dd192a0.jpg" alt="">
+		</div>
+
+	</div>
+</div>
+
+
+
+<!-- jquery -->
+<script src="{% static '/vendor/jquery/3.5.1/js/jquery.min.js' %}"></script>
+<!-- bootstrap -->
+<script src="{% static '/vendor/bootstrap/4.5.3/js/bootstrap.min.js' %}"></script>
+<!-- menu -->
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.sidebar.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mmenu.searchfield.min.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mhead.js' %}"></script>
+<script src="{% static '/vendor/mmenu.js/8.5.19/js/mburger.js' %}"></script>
+<!-- lightboxes -->
+<script src="{% static '/vendor/fancybox/3.5.7/js/jquery.fancybox.min.js' %}"></script>
+<!-- theme -->
+<script src="{% static 'neomorphism/assets/js/neumorphism.js' %}"></script>
+
+<!-- PLUGINS USAGE -->
+<script src="{% static '/gallery/js/init_header.js' %}"></script>
+
+<script>
+    $(window).on('load', function(){
+        function gridMasonry(){
+            var grid = $(".grid")
+            if( grid.length ){
+                grid.isotope({
+                itemSelector: '.grid-item',
+                    percentPosition: true,
+                    masonry: {
+                    columnWidth: '.grid-item',
+                        horizontalOrder: true,
+                        gutter: 15
+                    },
+                });
+            }
+        }
+        gridMasonry();
+    });
+</script>
