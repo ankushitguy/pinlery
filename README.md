@@ -9,7 +9,7 @@
 1. Bootstrap
 2. Fancybox
 3. Mmenu.JS
-4. Macy.JS
+4. Isotope
 5. Neumorphism UI
 
 ## TODO LIST
