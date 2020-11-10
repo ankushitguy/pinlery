@@ -105,34 +105,7 @@ only screen and (max-width:720px) {
 {% endblock %}
 
 {% block page_scripts %}
-
 <!-- grid -->
-    <script>
-        $(window).on('load', function() {
-            function gridMasonry() {
-                var grid = $(".masonry-grid")
-                if (grid.length) {
-                    grid.isotope({
-                        itemSelector: ".masonry-grid-item",
-                        layoutMode: "masonry",
-                        masonry: {
-                            columnWidth: ".masonry-grid-sizer",
-                            gutter: 18,
-                        },
-                        percentPosition: true,
-                    });
-                }
-            }
-
-            gridMasonry();
-            window.dispatchEvent(new Event('resize'));
-        });
-    </script>
-    <script>
-    $('[data-fancybox]').fancybox({
-                animationDuration : 325,
-                animationEffect   : 'slide-in-out',
-            });
-    </script>
+{% include './partials/scripts/script_init_grid.html' with mode='showcase' margin=18 only %}
 {% endblock %}
 

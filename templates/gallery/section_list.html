@@ -155,26 +155,10 @@ only screen and (max-width:720px) {
 {% endblock %}
 
 {% block page_scripts %}
+{% include './partials/scripts/script_init_grid.html' with mode='section_list' margin=18 only %}
     <script src="{% static '/gallery/js/lightbox_image_link.js' %}"></script>
     <script>
-        $(window).on('load', function(){
-            function gridMasonry(){
-                var grid = $(".masonry-grid")
-                if( grid.length ){
-                    grid.isotope({
-                        itemSelector: ".masonry-grid-item",
-                        layoutMode: "masonry",
-                        masonry: {
-                            columnWidth: ".masonry-grid-sizer",
-                            gutter: 18,
-                        },
-                        percentPosition: true,
-                    });
-                }
-            }
-            gridMasonry();
-            window.dispatchEvent(new Event('resize'));
-        });
+
     </script>
 {% endblock %}
 
