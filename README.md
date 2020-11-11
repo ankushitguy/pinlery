@@ -1,5 +1,5 @@
 # PINLERY 
-### First media CMS for a Pinterest-based online gallery creation, written in Python Django
+### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
 #### If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome!
 ## TECHNOLOGIES LIST
 * BACK-END (PYTHON):
@@ -14,7 +14,7 @@
 5. Neumorphism UI
 
 ## TODO LIST
-* Add pagination fron-end: menu pagination, left and right arrows.
+* Add pagination front-end: menu pagination, left and right arrows.
 * Change Mmenu.JS test data to a real dynamic data.
 * Add custom JQuery scrollbar.
 * Integrate a lazy image load.
