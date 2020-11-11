@@ -18,26 +18,25 @@
 }
 
 .masonry-grid-sizer {
-	width: calc(50% - 18px);
+    box-sizing: border-box;
+	width: calc(50% - 10px);
 }
 
 .masonry-grid-item {
 	box-sizing: border-box;
-	width: calc(50% - 18px);
+	width: calc(50% - 10px);
 	margin-bottom: 18px;
 }
 
-.container-fluid {
-	box-sizing: border-box;
-	padding: 0;
-}
+	.masonry-grid {
+      margin: 0 auto;
 
+    }
 @media handheld,
 only screen and (max-width:720px) {
 	.masonry-grid {
 		position: absolute;
 		max-width: 80%;
-		margin-left: 10%;
 	}
 	.masonry-grid-sizer {
 		width: 100%;

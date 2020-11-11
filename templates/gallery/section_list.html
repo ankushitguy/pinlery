@@ -8,63 +8,58 @@
 
     {% load static %}
     <style>
-    body {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.card {
-	box-sizing: border-box;
-}
 
 .masonry-grid-item img {
 	box-sizing: border-box;
-	display: block;
 	width: 100%;
+}
+
+.masonry-grid {
+      margin: 0 auto;
 }
 
 @media handheld,
 only screen and (min-width:1200px) {
-	.container {
+	 .masonry-grid {
 		position: absolute;
-		max-width: 90%;
-		margin-left: 5%;
+		max-width: 80%;
 	}
 	.masonry-grid-sizer {
-		width: calc(25% - 18px);
+		width: calc(25% - 14px);
 	}
 	.masonry-grid-item {
-		width: calc(25% - 18px);
+		width: calc(25% - 14px);
 		margin-bottom: 18px;
 	}
 }
 
 @media handheld,
 only screen and (max-width:1200px) {
+    	.masonry-grid {
+		position: absolute;
+		max-width: 80%;
+	}
 	.masonry-grid-sizer {
-		width: calc(33.3333% - 18px);
+		width: calc(33.3333% - 13px);
 	}
 	.masonry-grid-item {
-		width: calc(33.3333% - 18px);
+		width: calc(33.3333% - 13px);
 		margin-bottom: 18px;
 	}
 }
 
 @media handheld,
 only screen and (max-width:1020px) {
-	.container {
+	.masonry-grid {
 		position: absolute;
 		max-width: 70%;
 		margin-left: 15%;
 	}
 	.masonry-grid-sizer {
-		width: calc(50% - 18px);
+		width: calc(50% - 9px);
 	}
 	.masonry-grid-item {
-		width: calc(50% - 18px);
+		width: calc(50% - 9px);
 		margin-bottom: 18px;
 	}
 }
@@ -78,7 +73,7 @@ only screen and (max-width:720px) {
 		width: 100%;
 		margin-bottom: 18px;
 	}
-	.container {
+	.masonry-grid {
 		position: absolute;
 		max-width: 70%;
 		margin-left: 15%;
@@ -97,13 +92,12 @@ only screen and (max-width:720px) {
 
 <! -- main -->
 {% block content %}
-    <div class="container " id="container" role="main">
         <div class="masonry-grid">
             <div class="masonry-grid-sizer"></div>
             {% if section_list %}
                 {% for section in section_list %}
                     <div class="masonry-grid-item">
-                        <div class="border border-light shadow card bg-primary bg-1">
+                        <div class="border border-light card bg-primary bg-1 shadow">
                             <div class="text-black rounded text-center p-3 mt-4">
                                 <a class="" href="{% url 'showcase' section.slug %}">
                                     <h3 class="p-0 mb-0">{{ section.title_custom_split.0 }}</h3>
@@ -136,7 +130,7 @@ only screen and (max-width:720px) {
                                         <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-danger mr-2 bg-1" type="button">
                                             <span aria-hidden="true" class="far fa-heart"></span>
                                         </button>
-                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-1" type="button">
+                                        <button class="btn btn-sm btn-icon-only btn-primary btn-pill text-gray bg-1 " type="button">
                                             <span aria-hidden="true" class="far fa-heart"></span>
                                         </button>
                                     </div>
@@ -147,7 +141,6 @@ only screen and (max-width:720px) {
                 {% endfor %}
             {% endif %}
         </div>
-    </div>
 {% endblock %}
 
 {% block static_JS %}
