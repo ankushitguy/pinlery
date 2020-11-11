@@ -1,7 +1,4 @@
-{{ margin|json_script:"margin" }}
 <script>
-    let margin = JSON.parse(document.getElementById('margin').textContent);
-
     $(window).on('load', function() {
         function gridMasonry() {
             var grid = $(".masonry-grid")
@@ -11,7 +8,7 @@
                     layoutMode: "masonry",
                     masonry: {
                         columnWidth: ".masonry-grid-sizer",
-                        gutter: margin,
+                        gutter: 0,
                     },
                 });
             }

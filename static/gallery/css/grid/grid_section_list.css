@@ -1,3 +1,12 @@
+.masonry-grid-item {
+	padding: 9px;
+	width: 25%;
+}
+
+.masonry-grid-sizer {
+	width: 25%;
+}
+
 .masonry-grid-item img {
 	box-sizing: border-box;
 	width: 100%;
@@ -6,54 +15,35 @@
 .masonry-grid {
     margin: 0 auto;
     max-width: 80%;
-}
-
-@media handheld,
-only screen and (min-width:1200px) {
-	.masonry-grid-sizer {
-		width: calc(25% - 14px);
-	}
-	.masonry-grid-item {
-		width: calc(25% - 14px);
-		margin-bottom: 18px;
-	}
+    padding: 0;
 }
 
 @media handheld,
 only screen and (max-width:1200px) {
 	.masonry-grid-sizer {
-		width: calc(33.3333% - 13px);
+		width: 33.3333%;
 	}
 	.masonry-grid-item {
-		width: calc(33.3333% - 13px);
-		margin-bottom: 18px;
+		width: 33.3333%;
 	}
 }
 
 @media handheld,
 only screen and (max-width:1020px) {
-	.masonry-grid {
-		max-width: 70%;
-	}
 	.masonry-grid-sizer {
-		width: calc(50% - 9px);
+		width: 50%;
 	}
 	.masonry-grid-item {
-		width: calc(50% - 9px);
-		margin-bottom: 18px;
+		width: 50%;
 	}
 }
 
 @media handheld,
 only screen and (max-width:720px) {
-	.masonry-grid {
-		max-width: 70%;
-	}
 	.masonry-grid-sizer {
 		width: 100%
 	}
 	.masonry-grid-item {
 		width: 100%;
-		margin-bottom: 18px;
 	}
 }
