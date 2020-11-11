@@ -17,13 +17,19 @@ pinterest = Pinterest(email='nennertrennen@gmail.com',
 #pinterest.login()
 
 def showcase(request, section_slug):
-    section = Section.objects.get(slug=section_slug)
+    section_list = Section.objects.filter(active=True)
+    section = section_list.get(slug=section_slug)
     section_id = int(section.id_pinterest)
     pins = Pin.objects.filter(section__id_pinterest=section_id)
     paginator = Paginator(pins, 15)
     page = request.GET.get('page')
     pins = paginator.get_page(page)
-    return render(request, 'gallery/showcase.html', {'pins': pins, 'section_title': section.title_custom_split, 'section_slug': section.slug_custom_split})
+    return render(request, 'gallery/showcase.html', {
+        'section_list': section_list,
+        'pins': pins,
+        'section_title': section.title_custom_split,
+        'section_slug': section.slug_custom_split
+    })
 
 class section_list(generic.ListView):
     model = Section

@@ -19,30 +19,26 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class=" row">
-                        <div class="col-2 opacity-0">
-                            <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill" type="button">
-                                <b class="far fa-heart"></b>
+                            <div class="row justify-content-end">
+                        <div class="col-1">
+                            <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill opacity-0" type="button">
+                                <span class="far fa-heart"></span>
                             </button>
                         </div>
-                        <div class="col-9">
-                            <h5 class=" d-block center-vertical-absolute text-right" style="width:100%">
-                                More artists
+                        <div class="col-6 text-right justify-content-end">
+                            <h5 class="center-vertical-absolute ml-2 text-right justify-content-end">
+                                MORE ARTISTS
                             </h5>
                         </div>
                     </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">
-                        Action
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        Another action
-                    </a>
+                    {% for section in section_list %}
+                        <a class="dropdown-item" href="{% url 'showcase' section.slug %}">
+                            <b> {{ section.title_custom_split.0 }}</b>
+                        </a>
+                    {% endfor %}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        Something else here
-                    </a>
                 </div>
             </li>
             <li class="nav-item active">
@@ -72,8 +68,6 @@
 
 
     <script>
-
-
     document.addEventListener(
         "DOMContentLoaded", () => {
             new Mmenu( "#menu", {
