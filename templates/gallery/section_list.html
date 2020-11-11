@@ -1,85 +1,12 @@
 {% extends 'gallery/base.html' %}
+{% load static %}
 
 {% block static_CSS %}
     {% include 'gallery/partials/imports/import-static-css.html' %}
 {% endblock %}
 
 {% block page_styling %}
-
-    {% load static %}
-    <style>
-
-.masonry-grid-item img {
-	box-sizing: border-box;
-	width: 100%;
-}
-
-.masonry-grid {
-      margin: 0 auto;
-}
-
-@media handheld,
-only screen and (min-width:1200px) {
-	 .masonry-grid {
-		position: absolute;
-		max-width: 80%;
-	}
-	.masonry-grid-sizer {
-		width: calc(25% - 14px);
-	}
-	.masonry-grid-item {
-		width: calc(25% - 14px);
-		margin-bottom: 18px;
-	}
-}
-
-@media handheld,
-only screen and (max-width:1200px) {
-    	.masonry-grid {
-		position: absolute;
-		max-width: 80%;
-	}
-	.masonry-grid-sizer {
-		width: calc(33.3333% - 13px);
-	}
-	.masonry-grid-item {
-		width: calc(33.3333% - 13px);
-		margin-bottom: 18px;
-	}
-}
-
-@media handheld,
-only screen and (max-width:1020px) {
-	.masonry-grid {
-		position: absolute;
-		max-width: 70%;
-		margin-left: 15%;
-	}
-	.masonry-grid-sizer {
-		width: calc(50% - 9px);
-	}
-	.masonry-grid-item {
-		width: calc(50% - 9px);
-		margin-bottom: 18px;
-	}
-}
-
-@media handheld,
-only screen and (max-width:720px) {
-	.masonry-grid-sizer {
-		width: 100%
-	}
-	.masonry-grid-item {
-		width: 100%;
-		margin-bottom: 18px;
-	}
-	.masonry-grid {
-		position: absolute;
-		max-width: 70%;
-		margin-left: 15%;
-	}
-}
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_section_list.css' %}">
 {% endblock %}
 
 {% block navigation %}

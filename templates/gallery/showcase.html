@@ -1,52 +1,14 @@
 {% extends 'gallery/base.html' %}
+{% load static %}
 
 {% block static_CSS %}
     {% include 'gallery/partials/imports/import-static-css.html' %}
 {% endblock %}
 
 {% block page_styling %}
-    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/grid/grid_showcase.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/fancybox_animation.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static '/gallery/css/skeuomorphic_frame.css' %}">
-    <style>
-
-.masonry-grid {
-	box-sizing: border-box;
-	position: absolute;
-	max-width: 70%;
-	margin-left: 15%;
-}
-
-.masonry-grid-sizer {
-    box-sizing: border-box;
-	width: calc(50% - 10px);
-}
-
-.masonry-grid-item {
-	box-sizing: border-box;
-	width: calc(50% - 10px);
-	margin-bottom: 18px;
-}
-
-	.masonry-grid {
-      margin: 0 auto;
-
-    }
-@media handheld,
-only screen and (max-width:720px) {
-	.masonry-grid {
-		position: absolute;
-		max-width: 80%;
-	}
-	.masonry-grid-sizer {
-		width: 100%;
-	}
-	.masonry-grid-item {
-		width: 100%;
-		margin-bottom: 18px;
-	}
-}
-    </style>
 {% endblock %}
 
 {% block navigation %}
@@ -73,10 +35,11 @@ only screen and (max-width:720px) {
     <div class="masonry-grid">
        <div class="masonry-grid-sizer"></div>
        {% for pin in pins %}
-           <div class=" masonry-grid-item">
+           <div class="masonry-grid-item">
               <div class="btn btn-primary border-0 rounded-0 m-0 p-0">
                  <a data-fancybox="{{ section_slug }}" data-options='{"src":"{{ pin.image_url }}",
-                    "idleTime": false, "arrows": false, "protect": true}'
+                    "idleTime": false, "arrows": false, "protect": true,
+                    "buttons": ["share","slideShow","fullScreen","download","thumbs","close"]}'
                     data-caption="{{ pin.title }}" class="frame" style="background-color:{{ pin.color }}">
                     <div class="imageWrapper">
                        <img src="{{ pin.image_url }}" alt="" class="image">
@@ -105,6 +68,6 @@ only screen and (max-width:720px) {
 
 {% block page_scripts %}
 <!-- grid -->
-{% include './partials/scripts/script_init_grid.html' with mode='showcase' margin=18 only %}
+{% include './partials/scripts/script_init_grid.html' with mode='showcase' margin=0 only %}
 {% endblock %}
 

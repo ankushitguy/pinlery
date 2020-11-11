@@ -1,51 +1,29 @@
 {{ margin|json_script:"margin" }}
 <script>
-let margin = JSON.parse(document.getElementById('margin').textContent);
+    let margin = JSON.parse(document.getElementById('margin').textContent);
+
+    $(window).on('load', function() {
+        function gridMasonry() {
+            var grid = $(".masonry-grid")
+            if (grid.length) {
+                grid.isotope({
+                    itemSelector: ".masonry-grid-item",
+                    layoutMode: "masonry",
+                    masonry: {
+                        columnWidth: ".masonry-grid-sizer",
+                        gutter: margin,
+                    },
+                });
+            }
+        }
+        gridMasonry();
+        window.dispatchEvent(new Event('resize'));
+    });
+
 {% if mode == 'showcase' %}
-        $(window).on('load', function() {
-            function gridMasonry() {
-                var grid = $(".masonry-grid")
-                if (grid.length) {
-                    grid.isotope({
-                        itemSelector: ".masonry-grid-item",
-                        layoutMode: "masonry",
-                        masonry: {
-                            columnWidth: ".masonry-grid-sizer",
-                            gutter: margin,
-                        },
-                        percentPosition: true,
-                    });
-                }
-            }
-
-            gridMasonry();
-            window.dispatchEvent(new Event('resize'));
-        });
-
     $('[data-fancybox]').fancybox({
-                animationDuration : 325,
-                animationEffect   : 'slide-in-out',
-            });
-
-    {% elif mode == 'section_list' %}
-
-            $(window).on('load', function(){
-            function gridMasonry(){
-                var grid = $(".masonry-grid")
-                if( grid.length ){
-                    grid.isotope({
-                        itemSelector: ".masonry-grid-item",
-                        layoutMode: "masonry",
-                        masonry: {
-                            columnWidth: ".masonry-grid-sizer",
-                            gutter: 18,
-                        },
-                        percentPosition: true,
-                    });
-                }
-            }
-            gridMasonry();
-            window.dispatchEvent(new Event('resize'));
-        });
+        animationDuration : 325,
+        animationEffect   : 'slide-in-out',
+    });
 {% endif %}
 </script>
