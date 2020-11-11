@@ -24,21 +24,24 @@
 <!- body ->
 <body>
     <div class="wrapper" id="my-page">
-        {% block navigation %}
-        {% endblock %}
 
-        {% block menu %}
+        {% block navigation %}
         {% endblock %}
 
         <!- CONTENT block ->
         {% block content %}
         {% endblock %}
+
+        {% block menu %}
+        {% endblock %}
+
 </div>
 
-        {% block static_JS %}
-        {% endblock %}
+    {% block static_JS %}
+    {% endblock %}
 
-        {% block page_scripts %}
-        {% endblock %}
+    {% block page_scripts %}
+    {% endblock %}
+
 </body>
 </html>

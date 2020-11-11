@@ -1,25 +1,24 @@
-
-    <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav mr-auto" id="panel-menu">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
-                                <i class="far fa-heart"></i>
-                            </button>
-                    Categories
-                </a>
-            </li>
+<div class="collapse navbar-collapse" id="menu">
+    <ul class="navbar-nav mr-auto" id="panel-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
+                    <i class="far fa-heart"></i>
+                </button>
+                Categories
+            </a>
+        </li>
         {% if mode == 'showcase' %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'list_sections' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="{% url 'list_sections' %}" id="navbarDropdown"
+                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
-                                <i class="far fa-heart"></i>
-                            </button>
+                        <i class="far fa-heart"></i>
+                    </button>
                     Sections
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for section in section_list %}
-
                         <a class="dropdown-item" href="{% url 'showcase' section.slug %}">
                             {{ section.title_custom_split.0 }}
                         </a>
@@ -36,30 +35,25 @@
                     Categories
                 </a>
             </li>
-
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-default my-2 my-sm-0" type="submit">
-                Search
-            </button>
-        </form>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-default my-2 my-sm-0" type="submit">
+            Search
+        </button>
+    </form>
     </div>
 {{ menu_description|json_script:"menuDescription" }}
 <script>
     let menuDesctiption = "<b class='p-0 m-0'>" +
         JSON.parse(document.getElementById('menuDescription').textContent) + "</b>"
-
     let menuBottomButtons = [
         "<a href='#panel-menu'>" +
         "<button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset' type='button'>" +
         "<b class='fa fa-home'></b>" + "</button></a>"
     ]
-
     let logo = "<a class='p-0 m-0'><h1 class='p-0 m0'>#AESTHETICLIMBO</h1></a>"
-
     let badge = "<a><h1 class='shadow-inset badge d-inline badge badge-pill border-0 bg-primary'>"+"ART DAILY</h1></a>"
-
     let tabs = [
         "<a href='#panel-menu'>" +
         "<button class='btn btn-sm btn-icon-only border-0 shadow-inset btn-primary' type='button'>" +
@@ -71,15 +65,11 @@
 <script>
     document.addEventListener(
         "DOMContentLoaded", () => {
-
             new Mmenu( "#menu", {
 				wrappers: [ 'bootstrap' ],
-
                 extensions: ["shadow-page", "shadow-panels","shadow-menu", "multiline", "listview-justify", "border-full"],
-
-               "iconPanels": true,
-                "navbars": [
-
+                iconPanels: true,
+                navbars: [
                     {
                      "position": "top",
                      "content": [

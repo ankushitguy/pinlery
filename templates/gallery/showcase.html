@@ -15,10 +15,7 @@
     {% include 'gallery/partials/elements/nav-bar.html' %}
 {% endblock %}
 
-{% block menu %}
-    {% include 'gallery/partials/elements/menu.html' with mode="showcase" %}
-{% endblock %}
-
+<! -- main -->
 {% block content %}
     <div class="text-center jumbotron bg-primary p-1">
        <h5 class=" mt-5">
@@ -31,7 +28,6 @@
           artworks collection
        </p>
     </div>
-
     <div class="masonry-grid">
        <div class="masonry-grid-sizer"></div>
        {% for pin in pins %}
@@ -60,6 +56,10 @@
             <a href="?page={{ pins.next_page_number }}">next</a>
         {% endif %}
     {% endif %}
+{% endblock %}
+
+{% block menu %}
+    {% include 'gallery/partials/elements/menu.html' with mode="showcase" %}
 {% endblock %}
 
 {% block static_JS %}
