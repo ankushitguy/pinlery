@@ -37,7 +37,8 @@
                                     <div class="col-6">
                                         <a data-fancybox="collection" data-options='{
                                         "caption":"<a href=\"{% url 'showcase' section.slug %}\">{{ section.title }}<br>Touch to enter the entire collection!</a>",
-                                        "src":"{{ pin.image_url }}", "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false}'>
+                                        "src":"{{ pin.image_url }}", "link":"{% url 'showcase' section.slug %}", "clickContent" : false, "idleTime": false,
+                                        "buttons": ["slideShow","thumbs","close"]}'>
                                             <img src="{{ pin.small_image_url }}" alt="" class="shadow-lg rounded d-block">
                                         </a>
                                     </div>

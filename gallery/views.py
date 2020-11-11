@@ -25,6 +25,12 @@ def showcase(request, section_slug):
     pins = paginator.get_page(page)
     return render(request, 'gallery/showcase.html', {'pins': pins, 'section_title': section.title_custom_split, 'section_slug': section.slug_custom_split})
 
+class section_list(generic.ListView):
+    model = Section
+
+    def get_queryset(self):
+        return Section.objects.filter(active=True)
+
 def create_boards(request):
     boards = pinterest.boards(username='nennertrennen')
     for board in boards:
@@ -76,20 +82,3 @@ def create_pins(request):
                 except IntegrityError:
                     continue
             pins = pinterest.get_section_pins(section_id=target_section_id, reset_bookmark=True)
-
-def masonry(request):
-    return render(request, 'gallery/masonry.html')
-
-class section_list(generic.ListView):
-    model = Section
-
-    def get_queryset(self):
-        return Section.objects.filter(active=True)
-
-
-class test(generic.ListView):
-    model = Section
-
-    def get_queryset(self):
-        return Section.objects.filter(active=True)
-
