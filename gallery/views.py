@@ -25,12 +25,14 @@ def showcase(request, section_slug):
     paginator = Paginator(pins, 15)
     page = request.GET.get('page')
     pins = paginator.get_page(page)
-    menu_description = '{} {} {}'.format('Artworks by', section.title_custom_split[0], 'on')
+    title_custom_split = section.title.replace('[ ', '').split(' ] ')
+    slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
+    menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
     return render(request, 'gallery/showcase.html', {
         'section_list': section_list,
         'pins': pins,
-        'section_title': section.title_custom_split,
-        'section_slug': section.slug_custom_split,
+        'section_title': title_custom_split,
+        'section_slug': slug_custom_split,
         'menu_description': menu_description
     })
 
