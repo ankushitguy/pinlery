@@ -6,7 +6,7 @@
                     <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
                                 <i class="far fa-heart"></i>
                             </button>
-                    <b>Categories</b>
+                    Categories
                 </a>
             </li>
         {% if mode == 'showcase' %}
@@ -15,19 +15,17 @@
                     <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
                                 <i class="far fa-heart"></i>
                             </button>
-                    <b>Categories</b>
+                    Categories
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for section in section_list %}
 
-                        <li class="dropdown-item">
-                        <a class="nav-link" href="{% url 'showcase' section.slug %}">
-                            <b> {{ section.title_custom_split.0 }}</b>
+                        <a class="dropdown-item" href="{% url 'showcase' section.slug %}">
+                            {{ section.title_custom_split.0 }}
                         </a>
-                        </li>
                     <div class="dropdown-divider"></div>
                     {% endfor %}
-                </ul>
+                </div>
             </li>
         {% endif %}
             <li class="nav-item active">
@@ -35,7 +33,7 @@
                     <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
                                 <i class="far fa-heart"></i>
                             </button>
-                    <b>Categories</b>
+                    Categories
                 </a>
             </li>
 
@@ -82,7 +80,11 @@
                      "type": "title",
                      "content": [
                          "<b class='p-0 m-0'>" +
-                         "Artworks by {{ section_title.0 }} on the" +
+                         {% if mode == 'showcase' %}
+                         "Artworks by {{ section_title.0 }} on"
+                         {% elif mode == 'section_list' %}
+                         "There is {{ section_list.count }} personal art galleries on"
+                         {% endif %} +
                          "</b>",
                      ]
                   },
