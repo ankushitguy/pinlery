@@ -11,11 +11,11 @@
             </li>
         {% if mode == 'showcase' %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="{% url 'list_sections' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <button class="btn btn-sm btn-icon-only border-0 shadow-inset btn-pill mr-3" type="button">
                                 <i class="far fa-heart"></i>
                             </button>
-                    Categories
+                    Sections
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for section in section_list %}
@@ -45,11 +45,33 @@
             </button>
         </form>
     </div>
+{{ menu_description|json_script:"menuDescription" }}
+<script>
+    let menuDesctiption = "<b class='p-0 m-0'>" +
+        JSON.parse(document.getElementById('menuDescription').textContent) + "</b"
 
+    let menuBottomButtons = [
+        "<a href='#panel-menu'>" +
+        "<button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset' type='button'>" +
+        "<b class='fa fa-home'></b>" + "</button></a>"
+    ]
 
-    <script>
+    let logo = "<a class='p-0 m-0'><h1 class='p-0 m0'>#AESTHETICLIMBO</h1></a>"
+
+    let badge = "<a><h1 class='shadow-inset badge d-inline badge badge-pill border-0 bg-primary'>"+"ART DAILY</h1></a>"
+
+    let tabs = [
+        "<a href='#panel-menu'>" +
+        "<button class='btn btn-sm btn-icon-only border-0 shadow-inset btn-primary' type='button'>" +
+        "<span class='fa fa-home'></span>" + "</button></a>",
+        "<a href='#panel-language'>Log in</a>"
+    ]
+</script>
+
+<script>
     document.addEventListener(
         "DOMContentLoaded", () => {
+
             new Mmenu( "#menu", {
 				wrappers: [ 'bootstrap' ],
 
@@ -67,52 +89,32 @@
                     {
                      "position": "bottom",
                      "content": [
-                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset' type='button'>" +
-                        "<b class='fa fa-home'></b>" + "</button></a>",
-                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset' type='button'>" +
-                        "<b class='fa fa-home'></b>" + "</button></a>",
-                        "<a href='#panel-menu'><button class='btn btn-sm btn-icon-only btn-primary border-0 shadow-inset' type='button'>" +
-                        "<b class='fa fa-home'></b>" + "</button></a>",
+                         menuBottomButtons[0],
+                         menuBottomButtons[0],
+                         menuBottomButtons[0],
                      ]
                   },
                     {
                      "position": "top",
                      "type": "title",
                      "content": [
-                         "<b class='p-0 m-0'>" +
-                         {% if mode == 'showcase' %}
-                         "Artworks by {{ section_title.0 }} on"
-                         {% elif mode == 'section_list' %}
-                         "There is {{ section_list.count }} personal art galleries on"
-                         {% endif %} +
-                         "</b>",
+                         menuDesctiption
                      ]
                   },
                     {
                      "position": "top",
                      "type": "title",
-                     "content": [
-                         "<a class='p-0 m-0'><h1 class='p-0 m0'>#AESTHETICLIMBO</h1></a>",
-                     ]
+                     "content": logo
                   },
                     {
                      "position": "top",
                      "type": "title",
-                     "content": [
-                         "<a class=''>" +
-                         "<h1 class='shadow-inset badge d-inline badge badge-pill border-0 bg-primary'>" +
-                         "ART DAILY</h1></a>",
-                     ]
+                     "content": badge
                   },
                     {
                      "position": "top",
                      "type": "tabs",
-                     "content": [
-                         "<a href='#panel-menu'>" +
-                         "<button class=\"btn btn-sm btn-icon-only border-0 shadow-inset btn-primary\" type=\"button\">" +
-                         "<span class=\"fa fa-home\"></span>" + "</button></a>",
-                        "<a href='#panel-language'>Log in</a>",
-                     ]
+                     "content": tabs
                   },
                     {
                      "position": "top",
@@ -139,5 +141,4 @@
             });
         }
     );
-
-    </script>
+</script>

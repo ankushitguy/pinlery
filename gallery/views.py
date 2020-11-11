@@ -25,18 +25,27 @@ def showcase(request, section_slug):
     paginator = Paginator(pins, 15)
     page = request.GET.get('page')
     pins = paginator.get_page(page)
+    menu_description = '{} {} {}'.format('Artworks by', section.title_custom_split[0], 'on')
     return render(request, 'gallery/showcase.html', {
         'section_list': section_list,
         'pins': pins,
         'section_title': section.title_custom_split,
         'section_slug': section.slug_custom_split,
+        'menu_description': menu_description
     })
 
 class section_list(generic.ListView):
     model = Section
+    queryset = Section.objects.filter(active=True)
+    context_object_name = 'section_list'
 
-    def get_queryset(self):
-        return Section.objects.filter(active=True)
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        count = context['section_list'].count()
+        # Add in a QuerySet of all the books
+        context['menu_description'] = '{} {} {}'.format('There is', count, 'personal art galleries on')
+        return context
 
 def create_boards(request):
     boards = pinterest.boards(username='nennertrennen')
