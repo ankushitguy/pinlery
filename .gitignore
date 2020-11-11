@@ -1,7 +1,6 @@
 .idea/
 venv/
 cookies/
-examples.txt
 db.sqlite3
 gallery/migrations/
 
