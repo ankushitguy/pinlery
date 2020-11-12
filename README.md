@@ -14,15 +14,18 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 5. Neumorphism UI
 
 ## TODO LIST
-* Add detailed pagination to the menu.
-* Add custom JQuery scrollbar.
 * Integrate a lazy image load.
-* Make pages transitions.
-* Change Mmenu.JS test data to a real dynamic data.
+* Add custom JQuery scrollbar.
+* Make page transition animations.
+* Add tabs and links to the Mmenu.JS. 
+* Add detailed pagination to the Mmenu.JS.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 * ~~Add "scroll to top" button.~~
 * ~~Add left and right pagination arrows.~~
+* ~~Add fullscreen-default Fancybox mode.~~
+* ~~Integrate Isotope to the Bootstrap 4 grid.~~
 * ~~Migrate from the Macy.JS to the Isotope.~~
+* ~~Change Mmenu.JS test data to a dynamic data.~~
 
 ###### by imgVOID (Maria Hl.)
