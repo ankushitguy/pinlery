@@ -14,14 +14,15 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 5. Neumorphism UI
 
 ## TODO LIST
-* Add pagination front-end: menu pagination, left and right arrows.
-* Change Mmenu.JS test data to a real dynamic data.
+* Add detailed pagination to the menu.
 * Add custom JQuery scrollbar.
 * Integrate a lazy image load.
 * Make pages transitions.
+* Change Mmenu.JS test data to a real dynamic data.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
+* ~~Add "scroll to top" button.~~
+* ~~Add left and right pagination arrows.~~
 * ~~Migrate from the Macy.JS to the Isotope.~~
-* ~~(BUG!) Move header logo column to the center.~~
 
 ###### by imgVOID (Maria Hl.)

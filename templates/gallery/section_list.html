@@ -16,11 +16,9 @@
 <! -- main -->
 {% block content %}
         <div class="masonry-grid">
-            <div class="masonry-grid-sizer"></div>
             {% if section_list %}
                 {% for section in section_list %}
                     <div class="masonry-grid-item">
-
                         <div class="border border-light card bg-primary bg-1 shadow">
                             <div class="text-black rounded text-center p-3 mt-4">
                                 <a class="" href="{% url 'showcase' section.slug %}">

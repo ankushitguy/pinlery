@@ -28,22 +28,24 @@
           artworks collection
        </p>
     </div>
-    <div class="masonry-grid">
-       <div class="masonry-grid-sizer"></div>
+    <div class="container">
+    <div class="masonry-grid row">
+       <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
        {% for pin in pins %}
-           <div class="masonry-grid-item">
-              <div class="btn btn-primary border-0 rounded-0 m-0 p-0">
-                 <a data-fancybox="{{ section_slug }}" data-options='{"src":"{{ pin.image_url }}",
-                    "idleTime": false, "arrows": false, "protect": true,
-                    "buttons": ["share","slideShow","fullScreen","thumbs","close"]}'
-                    data-caption="{{ pin.title }}" class="frame" style="background-color:{{ pin.color }}">
-                    <div class="imageWrapper">
+           <div class="masonry-grid-item col-xs-11 col-md-6 col-lg-6">
+                    <div class="itemContent">
+              <div class="item btn btn-primary border-0 rounded-0 m-0 p-0">
+                 <div class="frame" style="background-color:{{ pin.color }}">
+                    <a data-fancybox="{{ section_slug }}" data-type="image" href="{{ pin.image_url }}"
+                       data-caption="{{ pin.title }}" class="imageWrapper">
                        <img src="{{ pin.image_url }}" alt="" class="image">
-                    </div>
-                 </a>
+                    </a>
+                 </div>
               </div>
            </div>
+                    </div>
        {% endfor %}
+    </div>
     </div>
     {% if pins.paginator.num_pages > 1 %}
         {% if pins.has_previous %}
@@ -69,5 +71,6 @@
 {% block page_scripts %}
 <!-- grid -->
 {% include './partials/scripts/script_init_grid.html' with mode='showcase' only %}
+{% include './partials/scripts/script_init_fancybox.html' with mode='fullscreen' section_slug=section_slug only %}
 {% endblock %}
 

@@ -1,35 +1,31 @@
 
-                            <nav class="shadow mh-head m-0 p-0" id="header" style="background-color: rgb(243,243,243)">
-
-       <div class="mh-btns-left m-0">
-      <a class="navbar-toggler mburger mburger--collapse"
+                            <nav class="shadow mh-head Sticky m-0 p-0" id="header" style="background-color: rgb(243,243,243)">
+       <div class="mh-btns-left">
+      <a class="navbar-toggler mh-burger btn-icon btn-icon-only"
          data-toggle="collapse" data-target="#menu" aria-controls="menu"
-         aria-expanded="true" aria-label="Toggle navigation">
+         aria-expanded="true" aria-label="Toggle navigation" id="toggler">
+          <span class="mburger mburger--collapse">
       <b></b>
       <b></b>
-      <b></b>
+      <b></b></span>
       </a>
    </div>
-   <h3 class="mh-text m-0"><a>#AESTHETICLIMBO</a></h3>
-   <span class="mh-btns-right m-0">
-   <a class="fa fa-shopping-bag" href="#shoppingbag"></a>
-   </span></nav>
-
+   <a><h3 class="mh-text m-0">#AESTHETICLIMBO</h3></a>
+   <div class="mh-btns-right m-0">
+   <a class="fa fa-shopping-bag" id="back-to-top"></a>
+   </div></nav>
 
     {% if pins.paginator.num_pages > 1 %}
-<nav class="mh-head fixed-bottom pagination circle-pagination mb-3"  style="background-color: rgba(0,0,0,0)">
-    <div class="mh-btns-left">
+<nav class="mh-head fixed-bottom paginationArrows mb-2" id="pagination" style="background-color: rgba(0,0,0,0);">
+    <div class="mh-btns-left  mb-2">
         {% if pins.has_previous %}
-         <a class="page-link btn-sm text-gray ml-1" href="?page={{ pins.previous_page_number }}"><i class="fas fa-angle-double-left"></i></a>
+         <a class="nav-link-arrow page-link btn btn-icon btn-icon-only rounded text-gray col-12" href="?page={{ pins.previous_page_number }}"><i class="fas fa-angle-double-left"></i></a>
         {% endif %}
     </div>
-    <div class="mh-btns-right">
+    <div class=" mh-btns-right mb-2">
         {% if pins.has_next %}
-         <a class="page-link text-gray mr-1" href="?page={{ pins.next_page_number }}"><i class="fas fa-angle-double-right"></i></a>
+         <a class="nav-link-arrow page-link btn btn-icon btn-icon-only text-gray col-12" href="?page={{ pins.next_page_number }}"><i class="fas fa-angle-double-right"></i></a>
         {% endif %}
     </div>
 </nav>
-<div class="fixed-bottom rounded-0">
-<div class="progress m-0"><div class="progress-bar-striped progress-bar bg-gray m-0 " style="width:10%" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div></div>
-</div>
         {% endif %}

@@ -1,34 +1,21 @@
 <script>
     $(window).on('load', function() {
+        var grid = $(".masonry-grid")
         function gridMasonry() {
-            var grid = $(".masonry-grid")
             if (grid.length) {
                 grid.isotope({
                     itemSelector: ".masonry-grid-item",
-                    layoutMode: "masonry",
-                    masonry: {
-                        columnWidth: ".masonry-grid-sizer",
+                    packery: {
+                        columnWidth: "#masonry-grid-sizer",
                         gutter: 0,
                     },
                 });
             }
         }
         gridMasonry();
-        window.dispatchEvent(new Event('resize'));
     });
 
-{% if mode == 'showcase' %}
-    $('[data-fancybox]').fancybox({
-        animationDuration : 325,
-        animationEffect   : 'slide-in-out',
-    });
-
-    $(document).on('afterShow.fb', function( e, instance, slide ) {
-        document.body.style.cursor = 'grab';
-    });
-
-    $(document).on('afterClose.fb', function( e, instance, slide ) {
-        document.body.style.cursor = 'default';
-    });
-{% endif %}
+    $(window).on('resize', function() {
+        grid.isotope('layout');
+    })
 </script>

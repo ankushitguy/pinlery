@@ -1,29 +1,37 @@
 .masonry-grid {
-	max-width: 70%;
-    margin: 0 auto;
-	padding: 0;
+}
+
+.container {
+}
+
+.masonry-grid-item img {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
 }
 
 .masonry-grid-sizer {
-	width: 50%;
+
+}
+
+.item {
+	width: 100% ;
+	margin: 0;
+	padding: 0;
 }
 
 .masonry-grid-item {
-	width: 50%;
-	padding: 9px
+	padding-bottom: 18px;
+	padding-left: 9px;
+	padding-right: 9px;
+	margin: 0;
 }
-
 @media handheld,
 only screen and (max-width:720px) {
-	.masonry-grid {
-		max-width: 75%;
-	}
-	.masonry-grid-sizer {
-		width: 100%;
-	}
-
 	.masonry-grid-item {
-		width: 100%;
-		padding: 15px
+		padding-bottom: 18px;
 	}
+.container {
+	max-width: 70%;
+}
 }
