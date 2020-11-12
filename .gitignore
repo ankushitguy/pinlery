@@ -3,6 +3,7 @@ venv/
 cookies/
 db.sqlite3
 gallery/migrations/
+examples.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,6 +1,6 @@
 # PINLERY 
 ### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
-#### If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome!
+If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome!
 ## TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. Django
@@ -18,6 +18,7 @@
 * Change Mmenu.JS test data to a real dynamic data.
 * Add custom JQuery scrollbar.
 * Integrate a lazy image load.
+* Make pages transitions.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 * ~~Migrate from the Macy.JS to the Isotope.~~

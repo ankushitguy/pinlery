@@ -1,5 +1,5 @@
 $(function() {
-	$(".mh-head.Sticky").mhead({
+	$("#header").mhead({
 		scroll: {
 			hide: 200
 		}

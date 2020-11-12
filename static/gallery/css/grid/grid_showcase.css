@@ -1,8 +1,3 @@
-.masonry-grid-item {
-	width: 50%;
-	padding: 9px
-}
-
 .masonry-grid {
 	max-width: 70%;
     margin: 0 auto;
@@ -13,16 +8,22 @@
 	width: 50%;
 }
 
+.masonry-grid-item {
+	width: 50%;
+	padding: 9px
+}
 
 @media handheld,
 only screen and (max-width:720px) {
 	.masonry-grid {
-		max-width: 80%;
+		max-width: 75%;
 	}
 	.masonry-grid-sizer {
 		width: 100%;
 	}
+
 	.masonry-grid-item {
 		width: 100%;
+		padding: 15px
 	}
 }
