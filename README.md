@@ -1,6 +1,6 @@
 # PINLERY 
 ### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
-If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome!
+If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome! [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
 ## TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. Django

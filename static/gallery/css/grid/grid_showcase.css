@@ -1,21 +1,5 @@
-.masonry-grid {
-}
-
-.container {
-}
-
-.masonry-grid-item img {
-	box-sizing: border-box;
-	width: 100%;
-	height: auto;
-}
-
-.masonry-grid-sizer {
-
-}
-
 .item {
-	width: 100% ;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -26,12 +10,17 @@
 	padding-right: 9px;
 	margin: 0;
 }
+
+.masonry-grid-item img {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+}
+
 @media handheld,
 only screen and (max-width:720px) {
 	.masonry-grid-item {
-		padding-bottom: 18px;
+		padding-left: 50px;
+		padding-right: 55px;
 	}
-.container {
-	max-width: 70%;
-}
 }
