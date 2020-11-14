@@ -17,18 +17,52 @@
 
 <! -- main -->
 {% block content %}
-    <div class="text-center jumbotron bg-primary p-1">
-       <h5 class=" mt-5">
-          {{ section_title.1 }}
-       </h5>
-       <h1>
-          {{ section_title.0 }}
-       </h1>
-       <p>
-          artworks collection
-       </p>
-    </div>
-    <div class="container">
+    <nav class="text-center jumbotron bg-primary p-1">
+        <h5 class=" mt-5">
+            {{ section_title.1 }}
+        </h5>
+        <h1>
+            {{ section_title.0 }}
+        </h1>
+        <p>
+            artworks collection
+        </p>
+        {% if pins.paginator.num_pages > 1  %}
+            <ul class="pagination pagination-sm circle-pagination justify-content-center">
+                {% if pins.number > paginate_limit.0 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for i in pins.paginator.page_range %}
+                    {% if pins.number == i %}
+                        <li class="page-item active disabled">
+                            <a class="page-link" href="#">
+                                <b>{{ i }}</b>
+                                <span class="sr-only">current</span>
+                            </a>
+                        </li>
+                    {% elif i > pins.number|add:'-3' and i < pins.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ i }}">
+                                <b>{{ i }}</b>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if pins.number <= pins.paginator.num_pages|add:paginate_limit.1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ pins.paginator.num_pages }}">
+                                <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    <div class="container container-masonry">
         <div class="masonry-grid row">
            <div id="masonry-grid-sizer" class=" col-xs-11 col-md-6 col-lg-6"></div>
            {% for pin in pins %}
@@ -47,17 +81,6 @@
            {% endfor %}
         </div>
     </div>
-    {% if pins.paginator.num_pages > 1 %}
-        {% if pins.has_previous %}
-            <a href="?page={{ pins.previous_page_number }}">previous</a>
-        {% endif %}
-        <span>
-            Page {{ pins.number }} of {{ pins.paginator.num_pages }}
-        </span>
-        {% if pins.has_next %}
-            <a href="?page={{ pins.next_page_number }}">next</a>
-        {% endif %}
-    {% endif %}
 {% endblock %}
 
 {% block menu %}

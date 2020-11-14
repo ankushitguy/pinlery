@@ -25,6 +25,7 @@ def showcase(request, section_slug):
     paginator = Paginator(pins, 15)
     page = request.GET.get('page')
     pins = paginator.get_page(page)
+    paginate_limit = [3,-3]
     title_custom_split = section.title.replace('[ ', '').split(' ] ')
     slug_custom_split = section.title.replace('[ ', '').split(' ] ')[0].replace(' ', '-').lower()
     menu_description = '{} {} {}'.format('Artworks by', title_custom_split[0], 'on')
@@ -33,7 +34,8 @@ def showcase(request, section_slug):
         'pins': pins,
         'section_title': title_custom_split,
         'section_slug': slug_custom_split,
-        'menu_description': menu_description
+        'menu_description': menu_description,
+        'paginate_limit': paginate_limit
     })
 
 class section_list(generic.ListView):

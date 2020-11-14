@@ -5,22 +5,11 @@
 }
 
 .masonry-grid-item {
-	padding-bottom: 18px;
-	padding-left: 9px;
-	padding-right: 9px;
-	margin: 0;
+	padding: 9px;
 }
 
 .masonry-grid-item img {
 	box-sizing: border-box;
 	width: 100%;
 	height: auto;
-}
-
-@media handheld,
-only screen and (max-width:720px) {
-	.masonry-grid-item {
-		padding-left: 50px;
-		padding-right: 55px;
-	}
 }
