@@ -6,23 +6,25 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 
 ## TECHNOLOGIES LIST
 * BACK-END (PYTHON):
-1. Django
+1. Django 3
 2. py3pinterest
 3. whitenoise
 * FRONT-END (JS, CSS):
-1. Bootstrap
-2. Isotope
-3. Fancybox
+1. Bootstrap 4
+2. Isotope 3
+3. Fancybox 3
 4. Mmenu.JS
-5. Neumorphism UI
+5. Themesberg Neumorphism 
 
 ## TODO LIST
 * Integrate a lazy image load.
 * Add custom JQuery scrollbar.
 * Make page transition animations.
-* Add tabs and links to the Mmenu.JS. 
+* Add tabs and links to the Mmenu. 
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
+* (Option) Add pagination arrows to the top showcase's jumbotron.
+###### DONE
 * ~~Add "scroll to top" button.~~
 * ~~Add detailed pagination to the top.~~
 * ~~Add fullscreen-default Fancybox mode.~~
