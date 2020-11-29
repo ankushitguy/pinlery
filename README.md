@@ -1,10 +1,10 @@
 # PINLERY 
-### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
+#### The first media CMS for a Pinterest-based online gallery creation, written in Python Django
 
 If you wanna to join the project in those alpha phase plz write a random issue with your contacts and wishes. It's my main project now, so u're very welcome! 
 [![Open Source Helpers](https://www.codetriage.com/imgvoid/pinlery/badges/users.svg)](https://www.codetriage.com/imgvoid/pinlery)
 
-## TECHNOLOGIES LIST
+### TECHNOLOGIES LIST
 * BACK-END (PYTHON):
 1. Django 3
 2. py3pinterest
@@ -16,7 +16,7 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 4. Mmenu.JS
 5. Themesberg Neumorphism 
 
-## TODO LIST
+### TODO LIST
 * Integrate a lazy image load.
 * Add custom JQuery scrollbar.
 * Make page transition animations.
@@ -33,5 +33,3 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 * ~~Migrate from the Macy.JS to the Isotope.~~
 * ~~Add fixed left and right pagination arrows.~~
 * ~~Change Mmenu.JS test data to a dynamic data.~~
-
-###### by imgVOID (Maria Hl.)
