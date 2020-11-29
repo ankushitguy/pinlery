@@ -21,6 +21,7 @@ If you wanna to join the project in those alpha phase plz write a random issue w
 * Add custom JQuery scrollbar.
 * Make page transition animations.
 * Add tabs and links to the Mmenu. 
+* (BUG) Add an auto filling for the slug field on a board object creation event.
 * (Future) Create the Redis-based caching.
 * (Future) Admin panel customisation (maybe Grapelli).
 * (Option) Add pagination arrows to the top showcase's jumbotron.
